@@ -2,8 +2,6 @@
 
 package lists;
 
-import java.lang.*;
-
 public class ArrayIndexedList extends List implements IndexedListInterface {
 
     public ArrayIndexedList() {
@@ -45,7 +43,14 @@ public class ArrayIndexedList extends List implements IndexedListInterface {
      */
     public Object set(int index, Object element) {
 
-        return null;
+        if ((index < 0) || (index >= size())) {
+            throw new IndexOutOfBoundsException("Illegal index of " + index +
+                    " passed to ArrayIndexList set method.\n");
+        }
+
+        Object hold = list[index]; 
+        list[index] = element; 
+        return hold; 
     }
 
     /** Throws IndexOutOfBoundsException if passed an index argument
@@ -53,8 +58,13 @@ public class ArrayIndexedList extends List implements IndexedListInterface {
      * Otherwise, returns the element on this list at position index
      */
     public Object get(int index) {
-
-        return null;
+        
+        if ((index < 0) || (index >= size())) {
+            throw new IndexOutOfBoundsException("Illegal index of " + index +
+                    " passed to ArrayIndexList get method.\n");
+        }
+        
+        return list[index]; 
     }
 
     /** If this list contains an element e such that e.equals(element)
@@ -63,7 +73,12 @@ public class ArrayIndexedList extends List implements IndexedListInterface {
      */
     public int indexOf(Object element) {
 
-        return 0;
+        find(element); 
+        if (found) {
+            return location;
+        } else {
+            return -1; 
+        }
     }
 
     /** Throws IndexOutOfBoundsException if passed an index argument
@@ -74,7 +89,32 @@ public class ArrayIndexedList extends List implements IndexedListInterface {
      */
     public Object remove(int index) {
 
-        return null;
+        if ((index < 0) || (index >= size())) {
+            throw new IndexOutOfBoundsException("Illegal index of " + index +
+                    " passed to ArrayIndexList remove method.\n");
+        }
+        
+        Object hold = list[index]; 
+        
+        for (int i = index; i < numElements; i++) {
+            list[index] = list[index + 1];
+        }
+        
+        list[numElements] = null; 
+        numElements--;
+        return hold; 
+    }
+    
+    /** Returns formatted string that represents this list */
+    public String toString() {
+        
+        String listString = "List:\n"; 
+        
+        for (int i = 0; i < numElements; i++) {
+            listString = listString + "[" + i + "] " + list[i] + "\n"; 
+        }
+        
+        return listString; 
     }
 
 
