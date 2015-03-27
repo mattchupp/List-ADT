@@ -1,3 +1,7 @@
+/**   
+ * @author Matt Chupp
+ */
+
 package lists;
 
 public class List {
