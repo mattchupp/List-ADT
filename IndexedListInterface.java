@@ -33,7 +33,7 @@ public interface IndexedListInterface
     // Throws IndexOutOfBoundsException if passed an index argument
     // such that index < 0 or index >= size()
     // Otherwise, removes element on this list at position index and 
-    // returns the removed element; all current elements at postions 
+    // returns the removed element; all current elements at positions 
     // higher than that position have 1 subtracted from their index. 
     
     
