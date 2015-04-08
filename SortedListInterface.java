@@ -9,7 +9,5 @@ public interface SortedListInterface
     
     void add(Comparable element); 
     // Adds element to this list. the list remains sorted 
-    
-    
-    
+ 
 }
